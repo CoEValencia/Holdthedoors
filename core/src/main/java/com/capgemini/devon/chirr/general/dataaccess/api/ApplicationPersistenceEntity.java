@@ -1,9 +1,10 @@
 package com.capgemini.devon.chirr.general.dataaccess.api;
 
-import com.capgemini.devon.chirr.general.common.api.ApplicationEntity;
-import io.oasp.module.jpa.dataaccess.api.AbstractPersistenceEntity;
-
 import javax.persistence.MappedSuperclass;
+
+import com.capgemini.devon.chirr.general.common.api.ApplicationEntity;
+
+import io.oasp.module.jpa.dataaccess.api.AbstractPersistenceEntity;
 
 /**
  * Abstract Entity for all Entities with an id and a version field.

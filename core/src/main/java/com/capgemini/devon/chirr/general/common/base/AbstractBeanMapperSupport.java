@@ -1,8 +1,8 @@
 package com.capgemini.devon.chirr.general.common.base;
 
-import io.oasp.module.beanmapping.common.api.BeanMapper;
-
 import javax.inject.Inject;
+
+import io.oasp.module.beanmapping.common.api.BeanMapper;
 
 /**
  * This abstract class provides {@link #getBeanMapper() access} to the {@link BeanMapper}.

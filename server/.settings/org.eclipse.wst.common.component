@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?><project-modules id="moduleCoreId" project-version="1.5.0">
+    <wb-module deploy-name="chirr-server">
+        <wb-resource deploy-path="/" source-path="/target/m2e-wtp/web-resources"/>
+        <wb-resource deploy-path="/" source-path="/src/main/webapp" tag="defaultRootSource"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/resources"/>
+        <dependent-module archiveName="chirr-core-0.1-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/chirr-core/chirr-core">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="oasp4j-security-2.0.0.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/oasp4j-security/oasp4j-security">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="oasp4j-web-2.0.0.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/oasp4j-web/oasp4j-web">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <property name="context-root" value="chirr-server"/>
+        <property name="java-output-path" value="/chirr-server/target/classes"/>
+    </wb-module>
+</project-modules>
