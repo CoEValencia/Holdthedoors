@@ -1,0 +1,8 @@
+.settings
+.project
+core/.settings/
+core/target/
+core/.project
+server/target/
+server/settings/
+server/.project
