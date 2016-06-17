@@ -10,6 +10,7 @@ import com.capgemini.devon.chirr.usermanagement.common.api.User;
  *
  * @author esoriafa
  */
+
 public class UserEntity extends ApplicationPersistenceEntity implements User {
 
   private Long id;
@@ -33,6 +34,7 @@ public class UserEntity extends ApplicationPersistenceEntity implements User {
   /**
    * @return id
    */
+  @Override
   public Long getId() {
 
     return this.id;
@@ -41,6 +43,7 @@ public class UserEntity extends ApplicationPersistenceEntity implements User {
   /**
    * @param id the id to set
    */
+  @Override
   public void setId(Long id) {
 
     this.id = id;
