@@ -6,3 +6,13 @@ core/.project
 server/target/
 server/settings/
 server/.project
+
+devon4sencha/.sencha/
+devon4sencha/build/
+devon4sencha/ext/
+devon4sencha/packages/
+devon4sencha/patches/
+devon4sencha/StarterTemplate/
+devon4sencha/.*
+devon4sencha/README.md
+devon4sencha/workspace.json
