@@ -4,13 +4,15 @@ Ext.define('Sample.controller.cook.CookController', {
     requires: [
         'Sample.view.cook.i18n.Cook_en_EN',
         'Sample.view.cook.i18n.Cook_es_ES',
-        'Sample.view.cook.Cook'
+        'Sample.view.cook.Cook',
+        'Sample.view.stream.SearchStream'
     ],
 
     config: {
         listen: {
             global: {
-                event_menuOpenPositions: 'onMenuOpenPositions'
+                event_menuOpenPositions: 'onMenuOpenPositions',
+                eventStreamSearch: 'onStreamSearch',
             }
         }
     },
@@ -33,5 +35,11 @@ Ext.define('Sample.controller.cook.CookController', {
             }
         });
         Devon.App.openInContentPanel(positions);
+    },
+
+    onStreamSearch: function(options){
+        var tables = new Sample.view.stream.SearchStream(options);
+
+        Devon.App.openInContentPanel(tables);
     }
 });

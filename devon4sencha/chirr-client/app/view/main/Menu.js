@@ -25,6 +25,9 @@ Ext.define('Sample.view.main.Menu', {
     },{
         text: i18n.main.menu.positions,
         eventName: 'event_menuOpenPositions'
+    },{
+        text: 'STREAM SEARCH',
+        eventName: 'eventStreamSearch'
     }]
 
 });
