@@ -1,0 +1,15 @@
+build/
+/ext/
+bootstrap.json
+bootstrap.js
+bootstrap.css
+**/sass/example/bootstrap.js
+**/sass/example/example.css
+
+**/java/target/
+**/java/.classpath
+**/java/.project
+**/java/.settings/
+/.project
+_attic/
+classic.json
