@@ -1,23 +1,16 @@
-Ext.define('chirr.controller.main.MainController', {
+Ext.define('Sample.controller.main.MainController', {
     extend: 'Ext.app.Controller',
 
     requires: [
-        'chirr.view.main.i18n.Main_en_EN',
-        'chirr.view.main.i18n.Main_es_ES', 
-        'chirr.view.main.Home',
-        'chirr.view.main.Header',
-        'chirr.view.main.Menu',
-        'chirr.view.main.Content',
-        'chirr.view.main.LeftSidePanel', 
-    ],
-
-    onClickButton: function () {
-        Ext.Msg.confirm('Confirm', 'Are you sure?', 'onConfirm', this);
-    },
-
-    onConfirm: function (choice) {
-        if (choice === 'yes') {
-            //
-        }
-    }
+        'Sample.view.main.i18n.Main_en_EN',
+        'Sample.view.main.i18n.Main_es_ES',
+        'Sample.model.main.Recent',
+        'Sample.view.main.Home',
+        'Sample.view.main.Header',
+        'Sample.view.main.Menu',
+        'Sample.view.main.Content',
+        'Sample.view.main.LeftSidePanel',
+        'Sample.view.main.RestaurantStatus',
+        'Sample.view.main.Recent'
+    ]
 });

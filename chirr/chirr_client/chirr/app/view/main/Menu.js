@@ -1,4 +1,4 @@
-Ext.define('chirr.view.main.Menu', {
+Ext.define('Sample.view.main.Menu', {
     extend: 'Ext.Panel',
 
     alias: 'widget.main-menu',
@@ -12,9 +12,22 @@ Ext.define('chirr.view.main.Menu', {
 
     controller: 'main-menu',
     cls:'main-menu',
-    buttonAlign:'left',
-    buttons: [{
-            text: i18n.main.page1, //i18n
-            eventName: 'eventOpenPage1'
-    }]
+    buttonAlign:'left'
+    /*buttons: [{
+        text: i18n.main.menu.tables,
+        menu:[{
+            text: i18n.main.menu.manageTables,
+            eventName: 'eventOpenTableList'
+        },{
+            text: i18n.main.menu.newTables,
+            eventName: 'eventTableAdd'
+        }]   
+    },{
+        text: i18n.main.menu.positions,
+        eventName: 'event_menuOpenPositions'
+    },{
+        text: 'STREAM SEARCH',
+        eventName: 'eventStreamSearch'
+    }]*/
+
 });

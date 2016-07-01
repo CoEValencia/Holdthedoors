@@ -5,20 +5,29 @@
  *
  *
  */
-Ext.define('chirr.Application', {
+Ext.define('Sample.Application', {
     extend: 'Devon.App',
 
-    name: 'chirr', 
+    name: 'Sample',
+
+    requires:[
+      'Sample.Simlets'
+      ],
 
     controllers: [
-        'chirr.controller.main.MainController',
-        'chirr.controller.page1.Page1Controller'
+        'Sample.controller.main.MainController',
+        'Sample.controller.table.TablesController',
+        'Sample.controller.cook.CookController'
     ],
 
     launch: function() {
-        Devon.Log.trace('chirr.app launch');
-        console.log('chirr.app launch'); 
-        
+        Devon.Log.trace('Sample.app launch');
+        console.log('Sample.app launch');
+
+        if (document.location.toString().indexOf('useSimlets')>=0){
+          Sample.Simlets.useSimlets();
+        }
+
         this.callParent(arguments);
     }
 });

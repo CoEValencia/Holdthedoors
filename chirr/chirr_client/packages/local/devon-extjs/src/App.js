@@ -42,7 +42,8 @@ Ext.define('Devon.App', {
         //'Sample.Security'
 
         'Devon.view.login.LoginVC',
-        'Devon.view.main.Viewport'
+        'Devon.view.main.Viewport',
+        'Devon.view.main.ViewportLogin'
     ],
 
     onBeforeLaunch: function() {

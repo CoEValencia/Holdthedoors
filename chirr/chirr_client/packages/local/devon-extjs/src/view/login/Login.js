@@ -67,5 +67,10 @@ Ext.define('Devon.view.login.Login', {
         listeners: {
             click: 'onLoginClick'
         }
+    },{
+        text: '**Register',
+        listeners: {
+            click: 'onRegisterClick'
+        }
     }]
 });

@@ -20,10 +20,6 @@ Ext.define('Devon.view.main.Viewport', {
         }, {
             region: 'center',
             xtype: 'main-content'
-        }, {
-            defineIf: Devon.Class.isDefined('widget.main-leftsidepanel'),
-            region: 'west',
-            xtype: 'main-leftsidepanel'
         }]);
         this.callParent();
     }
