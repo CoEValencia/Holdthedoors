@@ -38,6 +38,12 @@ Ext.define('Devon.view.login.LoginVC', {
         }
     },
 
+    onRegisterClick: function(btn){
+        Ext.widget('main-login', {
+            title: '**REGISTRO'
+        }).show();
+    },
+
     onLoginFailure: function(response, options) {
         this.mask();
         var errStatus = response.status;

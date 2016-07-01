@@ -4,18 +4,15 @@
  * Sencha Cmd when upgrading.
  */
 Ext.application({
-    name: 'chirr',
+    name: 'Sample',
 
-    extend: 'chirr.Application',
-    
-    autoCreateViewport: 'chirr.view.main.Main'
-	
+    extend: 'Sample.Application'
+
+    // autoCreateViewport: 'Devon.view.main.Viewport'
+
     //-------------------------------------------------------------------------
-    // Most customizations should be made to MyApp.Application. If you need to
+    // Most customizations should be made to App1.Application. If you need to
     // customize this file, doing so below this section reduces the likelihood
     // of merge conflicts when upgrading to new versions of Sencha Cmd.
     //-------------------------------------------------------------------------
-
-    /* As we can not touch the previous section, we override the autoCreateViewport property by repeating it here*/
-    ,autoCreateViewport:null
 });

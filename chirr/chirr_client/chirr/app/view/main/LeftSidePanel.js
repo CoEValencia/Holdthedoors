@@ -1,9 +1,10 @@
-Ext.define('chirr.view.main.LeftSidePanel', {
+Ext.define('Sample.view.main.LeftSidePanel', {
     extend: 'Ext.Panel',
 
     alias: 'widget.main-leftsidepanel',
 
     requires: [
+        'Sample.view.main.Recent'
     ],
 
     cls:'main-leftsidepanel',
@@ -16,11 +17,14 @@ Ext.define('chirr.view.main.LeftSidePanel', {
 
     layout: {
         type:'vbox',
-        align:'stretch'
+    	align:'stretch'
     },
 
     items: [{
-        html: i18n.main.leftSidePanel
+        xtype: 'main-res-status',
+        height:220
+    },{
+        xtype: 'main-recent',
+        flex:1
     }]
 });
- 

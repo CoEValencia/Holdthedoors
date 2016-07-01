@@ -136,9 +136,6 @@
     "production": {
         "compressor": {
             "type": "yui"
-        },
-        "cache": {
-            "enable": true
         }
     },
 

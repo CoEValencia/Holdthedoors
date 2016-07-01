@@ -1,4 +1,4 @@
-Ext.define('chirr.view.main.Home', {
+Ext.define('Sample.view.main.Home', {
     extend: 'Ext.Panel',
     alias: 'widget.main-home',
 

@@ -1,4 +1,4 @@
-Ext.define('chirr.view.main.HeaderVC', {
+Ext.define('Sample.view.main.HeaderVC', {
     extend: 'Ext.app.ViewController',
     alias: 'controller.main-header',
 

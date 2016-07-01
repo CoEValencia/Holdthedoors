@@ -16,3 +16,6 @@ devon4sencha/StarterTemplate/
 devon4sencha/.*
 devon4sencha/README.md
 devon4sencha/workspace.json
+
+.metadata
+Servers/

@@ -1,0 +1,59 @@
+.MainPanel
+{
+  width: 98%;
+  display: inline-block;
+  overflow: auto;
+  padding: 5px;
+}
+
+
+.FloatingSectionLeft
+{
+    width: 300px;
+    margin-bottom: 30px;
+    float: left;
+}
+
+.FloatingSectionRight
+{
+    width: 300px;
+    margin-bottom: 30px;
+    float: right;
+}
+
+.userImg
+{
+  height: 30px;
+  float: left;
+}
+
+.nameDiv
+{
+  border-bottom: 1px solid black;
+  height: 30px;
+  background-color: #96baf8;
+  text-align: center;
+}
+
+.textDiv
+{
+  padding: 2.5px;
+  font-size: 12px;
+  background-color: #c5c5c5;
+  text-align: justify;
+}
+
+.mainflow{
+  height: 60px;
+  margin-top: 5px;
+  border: 1px solid #3fc462;
+  text-align: center;
+}
+
+.mainflow.x-item-selected{
+  background: #3fc462;
+  border: 1px solid white;
+  color: white;
+  font-weight: 300;
+  outline: 1px solid #3fc462!important;
+}
