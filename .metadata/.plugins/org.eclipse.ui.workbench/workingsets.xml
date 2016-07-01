@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<workingSetManager>
-<workingSet editPageId="org.eclipse.ui.resourceWorkingSetPage" factoryID="org.eclipse.ui.internal.WorkingSetFactory" id="1467382873947_0" label="chirr" name="chirr">
-<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/chirr" type="4"/>
-<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/chirr-core" type="4"/>
-<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/chirr-server" type="4"/>
-</workingSet>
-</workingSetManager>
