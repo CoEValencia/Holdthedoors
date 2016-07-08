@@ -120,6 +120,14 @@ Ext.define('Sample.view.chat.Conversation',{
 					listeners: {
 						click: 'onMessageSendOther'
 					}
+				},{
+					xtype: 'button',
+					text: 'Stop task',
+					margin: '0 0 0 10',
+					flex: 0.2,
+					listeners: {
+						click: 'onStopTask'
+					}
 				}]
 			}]
 		};
