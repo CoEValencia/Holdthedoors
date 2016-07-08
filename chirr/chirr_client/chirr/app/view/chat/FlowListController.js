@@ -28,6 +28,7 @@ Ext.define('Sample.view.chat.FlowListController', {
         }
         else{
             tabpanel.add(newConversation);
+            tabpanel.setActiveTab(newConversation);
         }
         flowChat.setLoading(false);
     }

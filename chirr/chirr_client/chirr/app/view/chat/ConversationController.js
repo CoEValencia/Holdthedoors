@@ -15,6 +15,11 @@ Ext.define('Sample.view.chat.ConversationController', {
     	this.callParent(arguments);
     },
 
+    onStopTask: function(){
+        if(this.myTask)
+            Ext.TaskManager.stop(this.myTask);
+    },
+
     onClosePanel: function(){
         if(this.myTask)
             Ext.TaskManager.stop(this.myTask);
@@ -35,7 +40,7 @@ Ext.define('Sample.view.chat.ConversationController', {
 			});
 			dataview.up().scrollBy(0, 999999, true);
 		  },
-		  interval: 5500
+		  interval: 1500
 		});
     },
 
