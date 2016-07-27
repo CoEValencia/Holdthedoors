@@ -68,7 +68,8 @@ Ext.define('Sample.view.main.Header', {
     {
         xtype: 'button',
         style: 'margin-right:5px',
-        iconCls: 'fa fa-cog'
+        iconCls: 'fa fa-cog',
+        handler: 'onUserSettingsClick'
     },
     {
         xtype: 'button',

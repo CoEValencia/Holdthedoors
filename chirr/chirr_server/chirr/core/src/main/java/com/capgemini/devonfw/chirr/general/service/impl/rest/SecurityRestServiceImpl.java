@@ -79,6 +79,7 @@ public class SecurityRestServiceImpl {
     if (request.getRemoteUser() == null) {
       throw new NoActiveUserException();
     }
+
     return UserData.get().toClientTo();
   }
 

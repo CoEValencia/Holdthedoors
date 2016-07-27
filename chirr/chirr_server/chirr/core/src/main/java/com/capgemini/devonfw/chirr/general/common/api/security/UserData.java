@@ -1,15 +1,18 @@
 package com.capgemini.devonfw.chirr.general.common.api.security;
 
-import com.capgemini.devonfw.chirr.general.common.api.UserProfile;
-import com.capgemini.devonfw.chirr.general.common.api.to.UserDetailsClientTo;
-
 import java.security.Principal;
 import java.util.Collection;
+
+import javax.inject.Inject;
 
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.User;
+
+import com.capgemini.devonfw.chirr.general.common.api.UserProfile;
+import com.capgemini.devonfw.chirr.general.common.api.Usermanagement;
+import com.capgemini.devonfw.chirr.general.common.api.to.UserDetailsClientTo;
 
 /**
  * Container class for the profile of a user.
@@ -21,6 +24,9 @@ public class UserData extends User implements Principal {
   private static final long serialVersionUID = 1L;
 
   private UserProfile userProfile;
+
+  @Inject
+  private Usermanagement userManager;
 
   /**
    * The constructor.

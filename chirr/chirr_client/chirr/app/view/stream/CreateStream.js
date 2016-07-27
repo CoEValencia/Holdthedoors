@@ -17,7 +17,7 @@ Ext.create('Ext.data.Store', {
 });
 
 Ext.define("Sample.view.stream.CreateStream", {
-    extend: "Ext.panel.Panel",
+    extend: "Ext.form.Panel",
     alias: 'widget.createstream',
 
     padding: 30,
@@ -39,10 +39,11 @@ Ext.define("Sample.view.stream.CreateStream", {
         name: 'name'
     },{
         xtype: 'checkbox',
-        name: 'type',
+        name: 'privated',
         fieldLabel: 'Private',
+        disabled: true,
         listeners: {
-            change: 'onTypeChange'
+            //change: 'onTypeChange'
         }
     },{
         xtype: 'tagfield',

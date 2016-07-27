@@ -9,5 +9,9 @@ Ext.define('Sample.view.main.HeaderVC', {
 
     onLogoffClick: function() {
         Devon.Security.logoutOperation();
+    },
+
+    onUserSettingsClick: function(){
+    	Ext.Msg.alert('Opciones de usuario', 'Soon...');
     }
 });

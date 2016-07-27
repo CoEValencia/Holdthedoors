@@ -6,10 +6,25 @@ Ext.define('Sample.view.stream.CreateStreamController', {
     ],
 
     onCancel: function(btn){
-        this.getView().up('window').close();
+        this.onCloseWindow();
     },
 
     onSave: function(btn){
+        var me = this;
+        var view = this.getView();
+
+        var values = view.getValues();
+        values.privated = false;
+        values.userid = Devon.Security.currentUser.id;
+
+        Devon.rest.streammanagement.stream.post({
+            scope: this,
+            jsonData: values,
+            success: me.onCloseWindow()
+        });   
+    },
+
+    onCloseWindow: function(){
         this.getView().up('window').close();
     },
 

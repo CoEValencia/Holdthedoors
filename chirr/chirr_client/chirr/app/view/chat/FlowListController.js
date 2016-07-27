@@ -9,6 +9,20 @@ Ext.define('Sample.view.chat.FlowListController', {
     	this.callParent(arguments);
     },
 
+    onViewRender: function(view){
+        var streamid = view.up('flowchat').streamid;
+
+        view.setLoading(true);
+        Ext.defer(function(){
+            view.down('dataview').getStore().load({
+                params: {'streamid': streamid},
+                callback: function(){
+                    view.setLoading(false);
+                }
+            });
+        }, 800);
+    },
+
     onFlowClick: function(list, record){
         var flowChat = this.getView().up('flowchat');
         var tabpanel = flowChat.down('tabpanel');
@@ -18,6 +32,7 @@ Ext.define('Sample.view.chat.FlowListController', {
             region: 'center',
             title: record.get('name'),
             name: record.get('name'),
+            params: record,
             closable: true
         });
 
@@ -31,5 +46,28 @@ Ext.define('Sample.view.chat.FlowListController', {
             tabpanel.setActiveTab(newConversation);
         }
         flowChat.setLoading(false);
+    },
+
+    onStreamSearch: function(cmp, newValue, oldValue){
+        var view = this.getView();
+        var dataview = view.down('dataview');
+        var streamid = view.up('flowchat').streamid;
+
+        if(newValue != null && newValue != ''){
+            view.setLoading(true);
+            view.down('dataview').getStore().load({
+                params: {
+                    'streamid': streamid,
+                    'name': newValue
+                },
+                callback: function(){
+                    view.setLoading(false);
+                }
+            });    
+        }
+    },
+
+    onFlowCreate: function(){
+        Ext.Msg.alert('Aviso', 'Soon...');
     }
 });
