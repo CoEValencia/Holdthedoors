@@ -12,5 +12,4 @@ bootstrap.css
 **/java/.settings/
 /.project
 _attic/
-classic.json
-.sencha
+classic.json 
