@@ -6,8 +6,7 @@ core/.project
 server/target/
 server/settings/
 server/.project
-
-devon4sencha/.sencha/
+ 
 devon4sencha/build/
 devon4sencha/ext/
 devon4sencha/packages/
