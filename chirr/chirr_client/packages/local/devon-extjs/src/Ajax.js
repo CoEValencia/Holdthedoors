@@ -17,7 +17,6 @@ Ext.define('Devon.Ajax', {
 
     define: function(routes) {
         Ext.Object.each(routes, function(route, routeConf) {
-
             var rest = function(method) {
                 return function(options) {
 

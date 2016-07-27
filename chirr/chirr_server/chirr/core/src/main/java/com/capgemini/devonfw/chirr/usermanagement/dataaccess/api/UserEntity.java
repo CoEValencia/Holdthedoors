@@ -1,5 +1,6 @@
 package com.capgemini.devonfw.chirr.usermanagement.dataaccess.api;
 
+import javax.inject.Named;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
@@ -15,6 +16,7 @@ import com.capgemini.devonfw.chirr.usermanagement.common.api.User;
  */
 @Entity
 @Table(name = "USER")
+@Named
 public class UserEntity extends ApplicationPersistenceEntity implements User {
 
   @Column(name = "name")

@@ -16,6 +16,7 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import com.capgemini.devonfw.chirr.general.common.api.UserProfile;
 import com.capgemini.devonfw.chirr.general.common.api.Usermanagement;
 import com.capgemini.devonfw.chirr.general.common.api.security.UserData;
+
 import io.oasp.module.security.common.base.accesscontrol.AbstractAccessControlBasedAuthenticationProvider;
 
 /**
@@ -63,7 +64,7 @@ public class ApplicationAuthenticationProvider
   protected UserProfile retrievePrincipal(String username, UsernamePasswordAuthenticationToken authentication) {
 
     try {
-      return this.usermanagement.findUserProfileByLogin(username);
+      return this.usermanagement.findUserProfileByLogin(username, authentication.getCredentials().toString());
     } catch (RuntimeException e) {
       e.printStackTrace();
       UsernameNotFoundException exception = new UsernameNotFoundException("Authentication failed.", e);

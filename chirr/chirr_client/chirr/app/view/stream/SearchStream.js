@@ -1,24 +1,6 @@
 Ext.create('Ext.data.Store', {
-    storeId:'simpsonsStore',
-    fields:['name', 'email', 'phone'],
-    data:{'items':[
-        { 'name': 'Stream Juegos',  "email":"lisa@simpsons.com",  "phone":"555-111-1224"  },
-        { 'name': 'Stream Devon',  "email":"bart@simpsons.com",  "phone":"555-222-1234" },
-        { 'name': 'Stream Rasca', "email":"homer@simpsons.com",  "phone":"555-222-1244"  },
-        { 'name': 'Stream Pica', "email":"marge@simpsons.com", "phone":"555-222-1254"  }
-    ]},
-    proxy: {
-        type: 'memory',
-        reader: {
-            type: 'json',
-            rootProperty: 'items'
-        }
-    }
-});
-
-Ext.create('Ext.data.Store', {
-    storeId:'simpsonsStore2',
-    fields:['name', 'email', 'phone'],
+    storeId:'streamStore',
+    fields:['id', 'name', 'privated','userid'],
     proxy: {
         type: 'memory',
         reader: {
@@ -34,7 +16,8 @@ Ext.define("Sample.view.stream.SearchStream", {
     alias: 'widget.searchstream',
 
     requires: [
-        'Ext.grid.Panel'
+        'Ext.grid.Panel',
+        'Sample.view.stream.SearchStreamModel'
     ],
 
     padding: 30,
@@ -42,9 +25,9 @@ Ext.define("Sample.view.stream.SearchStream", {
 
     controller: "searchstream",
     title: 'Select stream',
-    /*viewModel: {
-        type: "cook-model"
-    },*/
+    viewModel: {
+        type: "searchstream"
+    },
 
     layout:{
         type:'vbox',
@@ -53,20 +36,22 @@ Ext.define("Sample.view.stream.SearchStream", {
 
     items: [{
         xtype: 'combobox',
+        reference: 'streamCombo',
         emptyText: 'Search streams...',
-        store: Ext.data.StoreManager.lookup('simpsonsStore'),
+        bind: {
+            store: '{streams}'
+        },
         displayField: 'name',
         valueField: 'name',
         listeners: {
-            select: function(combo, record){
-                combo.up().down('grid').getStore().add(record.data);
-            }
+            select: 'onSelectStream'
         }
     },{
         xtype: 'grid',
-        store: Ext.data.StoreManager.lookup('simpsonsStore2'),
+        store: Ext.data.StoreManager.lookup('streamStore'),
         columns: [
             { text: 'Name', dataIndex: 'name', flex: 1 },
+            { text: 'User', dataIndex: 'userid', flex: 1 },
             { 
                 xtype: 'widgetcolumn',
                 text: 'Action',
@@ -75,12 +60,10 @@ Ext.define("Sample.view.stream.SearchStream", {
                     text: '',
                     iconCls: 'fa fa-trash',
                     listeners: {
-                        click: function(btn){
-                            var record = btn.getWidgetRecord();
-                            btn.up('grid').getStore().remove(record);
-                        }
+                        click: 'onGridDeleteRecord'
                     }
-                }
+                },
+                onWidgetAttach: 'onWidgetRender'
             }
         ],
         flex: 1,

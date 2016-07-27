@@ -16,7 +16,6 @@ Ext.define("Sample.view.chat.FlowChat", {
         collapsible: true
     },{
         xtype: 'tabpanel',
-        //title: 'Flow conversation',
         region: 'center'
     }]
 });

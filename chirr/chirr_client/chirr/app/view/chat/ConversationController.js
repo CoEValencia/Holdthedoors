@@ -5,14 +5,14 @@ Ext.define('Sample.view.chat.ConversationController', {
     requires: ['Ext.util.DelayedTask'],
 
     init: function(){
-    	this.control({
-    		'conversation': {
-    			beforerender: 'onChatRender',
+        this.control({
+            'conversation': {
+                afterrender: 'onChatRender',
                 close: 'onClosePanel'
-    		}
-    	});
+            }
+        });
 
-    	this.callParent(arguments);
+        this.callParent(arguments);
     },
 
     onStopTask: function(){
@@ -26,61 +26,59 @@ Ext.define('Sample.view.chat.ConversationController', {
     },
 
     onChatRender: function(view){
-    	var me = this;
-    	var dataview = this.getView().down('dataview');
-    	var store = dataview.getStore();
+        var me = this;
+        var dataview = this.getView().down('dataview');
+        var store = dataview.getStore();
+        var record = this.getView().params;
 
-        this.myTask = Ext.TaskManager.start({
-		  run: function() {
-		  	store.add({
-				img: 'https://mug0.assets-yammer.com/mugshot/images/48x48/8rzxMRRZ3xVVJ92vcsVssZqlsB8b1FwN',
-				name: 'Jhonatan Core',
-				text: 'Mensaje ' + Math.random(),
-				date: new Date()
-			});
-			dataview.up().scrollBy(0, 999999, true);
-		  },
-		  interval: 1500
-		});
+        me.myTask = Ext.TaskManager.start({
+          run: function() {
+            store.load({
+                params: {'flowid': record.get('id')},
+                callback: function(){
+                    dataview.up().scrollBy(0, 999999, true);
+                }
+            });
+          },
+          interval: 1500
+        });
     },
 
-    onOpenChatClick: function(btn){
-    	this.getView().down('#contentPanel').removeAll();
+    onEnterPush: function(field, e){
+        if (field.isValid() && e.getKey() == e.ENTER) {
+            var record = this.getView().params;
+            var dataview = this.getView().down('dataview');
+            var form = this.lookupReference('conversationForm');
+            var values = form.getValues();
 
-    	var chat = Ext.create('chirr.view.chat.ChirrChatView');
+            values.flowid = record.get('id');
+            values.userid = Devon.Security.currentUser.id;
 
-    	this.getView().down('#contentPanel').add(chat);
-    },
+            form.reset();
 
-    onMessageSendOther: function(){
-    	var dataview = this.getView().down('dataview');
-    	var store = dataview.getStore();
-    	var text = this.lookupReference('messageField');
-
-    	store.add({
-			img: 'https://mug0.assets-yammer.com/mugshot/images/48x48/8rzxMRRZ3xVVJ92vcsVssZqlsB8b1FwN',
-			name: 'Jhonatan Core',
-			text: text.getValue(),
-			date: new Date()
-		});
-
-		dataview.up().scrollBy(0, 999999, true);
-        text.reset();
+            Devon.rest.messagemanagement.message.post({
+                scope: this,
+                jsonData: values
+            });
+        }
     },
 
     onMessageSendMe: function(){
-    	var dataview = this.getView().down('dataview');
-    	var store = dataview.getStore();
-    	var text = this.lookupReference('messageField');
+        var record = this.getView().params;
+        var dataview = this.getView().down('dataview');
+        var form = this.lookupReference('conversationForm');
+        var values = form.getValues();
 
-    	store.add({
-			img: 'https://mug0.assets-yammer.com/mugshot/images/75x75/RNgqbtFHFwRQLmlh93WZs3PTM6btWgSD',
-			name: 'Quique Mateu',
-			text: text.getValue(),
-			date: new Date()
-		});
+        values.flowid = record.get('id');
+        values.userid = Devon.Security.currentUser.id;
 
-		dataview.up().scrollBy(0, 999999, true);
-        text.reset();
+        if(form.isValid()){
+            form.reset();
+
+            Devon.rest.messagemanagement.message.post({
+                scope: this,
+                jsonData: values
+            });   
+        }
     }
 });

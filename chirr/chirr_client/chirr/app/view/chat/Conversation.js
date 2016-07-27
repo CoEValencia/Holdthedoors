@@ -1,52 +1,16 @@
-Ext.define('Image', {
-    extend: 'Ext.data.Model',
-    fields: [
-        { name:'img', type:'string' },
-        { name:'name', type:'string' },
-        { name:'text', type: 'string'}
-    ]
-});
-
-Ext.create('Ext.data.Store', {
-    id:'imagesStore',
-    model: 'Image',
-    data: [
-        { 
-        	img:'https://mug0.assets-yammer.com/mugshot/images/48x48/8rzxMRRZ3xVVJ92vcsVssZqlsB8b1FwN', 
-        	name:'Jhonatan Core',
-        	text: 'Buenas!',
-        	date: new Date()
-        },
-        { 
-        	img:'https://mug0.assets-yammer.com/mugshot/images/48x48/8rzxMRRZ3xVVJ92vcsVssZqlsB8b1FwN', 
-        	name:'Jhonatan Core',
-        	text: '¿Que tal?',
-        	date: new Date()
-        },
-        { 
-        	img:'https://mug0.assets-yammer.com/mugshot/images/48x48/8rzxMRRZ3xVVJ92vcsVssZqlsB8b1FwN', 
-        	name:'Jhonatan Core',
-        	text: '¿Bien?',
-        	date: new Date()
-        },
-        { 
-        	img:'https://mug0.assets-yammer.com/mugshot/images/48x48/8rzxMRRZ3xVVJ92vcsVssZqlsB8b1FwN', 
-        	name:'Jhonatan Core',
-        	text: 'Si bueno...',
-        	date: new Date()
-        }
-    ]
-});
-
-
 Ext.define('Sample.view.chat.Conversation',{
 	extend: 'Ext.panel.Panel',
 	alias: 'widget.conversation',
 
 	layout: 'border',
 
-	requires: ['Sample.view.chat.ConversationController'],
+	requires: ['Sample.view.chat.ConversationController',
+			   'Sample.view.chat.ConversationModel'
+   ],
 	controller: 'conversation',
+	viewModel: {
+		type: 'conversation'
+	},
 
 	initComponent: function(){
         Ext.apply(this, {
@@ -67,66 +31,70 @@ Ext.define('Sample.view.chat.Conversation',{
 			items:[{
 				xtype: 'panel',
 				layout: 'fit',
-				scrollable: true,
+				overflowY: 'auto',
 				flex: 1,
 				items:[{
 					xtype: 'dataview',
-					store: this.getConversationStore(),
+					/*bind: {
+			            store: '{messages}'
+			        },*/
+			        store: this.getConversationStore(),
+					padding: 10,
+					loadMask: false,
 				    tpl:new Ext.XTemplate(
 					    '<tpl for=".">',
 					    	'<div class="MainPanel">',
-						    	"<tpl if='name == \"Quique Mateu\"'>",
+						    	"<tpl if='userid == Devon.Security.currentUser.id'>",
+						    		'<img style="float:right" class= "userImg" src="resources/user.png"></img>',
 						    		'<div class="FloatingSectionRight">',
 						    	"<tpl else>",
+						    		'<img style="float:left" class= "userImg" src="resources/user.png"></img>',
 						    		'<div class="FloatingSectionLeft">',
+						    		'<p class="nameDiv"><b>User: {userid}</b></p>',
 								"</tpl>",
-						          '<img class= "userImg" src="{img}"></img>',
-						          '<div class="nameDiv">{name} - {date:date("h:i:s")}</div>',
-								  '<div class="textDiv">{text}</div>',
+						          //'<img style="float:right" class= "userImg" src="resources/user.png"></img>',
+						          //'<div class="nameDiv">{name} - {date:date("h:i:s")}</div>',
+						          //'<div class="nameDiv">User: {userid}</div>',
+								  '<div class="textDiv">{content}</div>',
+								  //'<div><time>User: {userid}</time></div>',
 						        '</div>',
 					        '</div><br/>',
 					    '</tpl>'
 					),
 				    itemSelector: 'div.MainPanel',
-				    emptyText: 'No images available'
+				    emptyText: 'Sin mensajes...'
 				}]
 			},{
 				xtype:'form',
-		        collapsible: true,
+		        collapsible: false,
+		        reference: 'conversationForm',
 		        height: 100,
 		        layout: {
 					type: 'hbox',
 					align: 'stretch'
 				},
+				padding: 10,
+				defaults: {padding: 10},
 		        items: [{
 					xtype: 'textfield',
 					reference: 'messageField',
+					name: 'content',
 					border: true,
 					margin: '0 0 0 5',
-					flex: 0.8
+					allowOnlyWhitespace: false,
+					allowBlank: false,
+					invalidCls: 'invalidMsg',
+					flex: 0.8,
+					listeners:{
+						specialkey: 'onEnterPush'
+					}
 				},{
 					xtype: 'button',
-					text: 'Enviar como yo',
+					text: 'Enviar',
 					margin: '0 0 0 10',
 					flex: 0.2,
 					listeners: {
 						click: 'onMessageSendMe'
-					}
-				},{
-					xtype: 'button',
-					text: 'Enviar como Jhonny',
-					margin: '0 0 0 10',
-					flex: 0.2,
-					listeners: {
-						click: 'onMessageSendOther'
-					}
-				},{
-					xtype: 'button',
-					text: 'Stop task',
-					margin: '0 0 0 10',
-					flex: 0.2,
-					listeners: {
-						click: 'onStopTask'
 					}
 				}]
 			}]
@@ -136,34 +104,12 @@ Ext.define('Sample.view.chat.Conversation',{
 	getConversationStore: function(){
 		var store = Ext.create('Ext.data.Store', {
 		    id:'imagesStore',
-		    model: 'Image',
+		    requires: ['Sample.model.message.MessageM'],
+		    model: 'Sample.model.message.MessageM',
 		    name:'storeconversation_'+Math.random(),
-		    data: [
-		        { 
-		        	img:'https://mug0.assets-yammer.com/mugshot/images/48x48/8rzxMRRZ3xVVJ92vcsVssZqlsB8b1FwN', 
-		        	name:'Jhonatan Core',
-		        	text: 'Buenas!',
-		        	date: new Date()
-		        },
-		        { 
-		        	img:'https://mug0.assets-yammer.com/mugshot/images/48x48/8rzxMRRZ3xVVJ92vcsVssZqlsB8b1FwN', 
-		        	name:'Jhonatan Core',
-		        	text: '¿Que tal?',
-		        	date: new Date()
-		        },
-		        { 
-		        	img:'https://mug0.assets-yammer.com/mugshot/images/48x48/8rzxMRRZ3xVVJ92vcsVssZqlsB8b1FwN', 
-		        	name:'Jhonatan Core',
-		        	text: '¿Bien?',
-		        	date: new Date()
-		        },
-		        { 
-		        	img:'https://mug0.assets-yammer.com/mugshot/images/48x48/8rzxMRRZ3xVVJ92vcsVssZqlsB8b1FwN', 
-		        	name:'Jhonatan Core',
-		        	text: 'Si bueno...',
-		        	date: new Date()
-		        }
-		    ]
+		    proxy: {
+                type : 'messagemanagement.search'
+            }
 		});
 
 		return store;

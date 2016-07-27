@@ -6,7 +6,7 @@ Ext.define('Devon.view.login.LoginVM', {
     // in a real app.
     data: {
         defaultOrg: 1,
-        username: 'waiter'
+        username: 'emateubo'
     },
 
     stores: {}

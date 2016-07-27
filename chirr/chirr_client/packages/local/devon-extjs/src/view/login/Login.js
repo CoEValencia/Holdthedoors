@@ -39,7 +39,7 @@ Ext.define('Devon.view.login.Login', {
             }
         }, {
             xtype: 'textfield',
-            value: 'waiter',
+            value: 'password',
             name: 'password',
             inputType: 'password',
             fieldLabel: i18n.login.password,
@@ -68,7 +68,7 @@ Ext.define('Devon.view.login.Login', {
             click: 'onLoginClick'
         }
     },{
-        text: '**Register',
+        text: 'Registro',
         listeners: {
             click: 'onRegisterClick'
         }

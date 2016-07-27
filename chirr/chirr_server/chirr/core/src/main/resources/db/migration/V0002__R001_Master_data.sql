@@ -47,4 +47,16 @@ INSERT INTO STAFFMEMBER (id, login, role, firstname, lastname, modificationCount
 INSERT INTO STAFFMEMBER (id, login, role, firstname, lastname, modificationCounter) VALUES (3, 'barkeeper', 2, 'Bianca', 'Barkeeper', 0);
 
 INSERT INTO USER (id, modificationCounter, username, name, lastname, password) VALUES (1, 1, 'jhcore', 'Jhonatan', 'Core', 'password');
-INSERT INTO USER (id, modificationCounter, username, name, lastname, password) VALUES (2, 1, 'emateubo', 'Enrique', 'Mateu Brox', 'password');
+INSERT INTO USER (id, modificationCounter, username, name, lastname, password) VALUES (2, 1, 'emateubo', 'Enrique', 'Mateu Borox', 'password');
+
+INSERT INTO STREAM (id, modificationCounter, name, userid, privated) VALUES (1, 1, 'Devon', 1, true);
+INSERT INTO STREAM (id, modificationCounter, name, userid, privated) VALUES (2, 1, 'NBA', 2, false);
+
+INSERT INTO FLOW (id, modificationCounter, name, streamid, userid) VALUES (1, 1, 'Devon Programmers', 1, 1);
+INSERT INTO FLOW (id, modificationCounter, name, streamid, userid) VALUES (2, 1, 'Devon TeamLeaders', 1, 2);
+INSERT INTO FLOW (id, modificationCounter, name, streamid, userid) VALUES (3, 1, 'NBA Players', 2, 1);
+INSERT INTO FLOW (id, modificationCounter, name, streamid, userid) VALUES (4, 1, 'NBA Coaches', 2, 2);
+
+INSERT INTO MESSAGE (id, modificationCounter, content, flowid, userid) VALUES (1, 1, 'Hola', 1, 1);
+INSERT INTO MESSAGE (id, modificationCounter, content, flowid, userid) VALUES (2, 1, 'Yeeee que pasa cosí?', 1, 2);
+
