@@ -25,8 +25,8 @@ Open another CLI and you should be able to run:
 ```sh
 sencha
 ```
-Before running the app, you need to copy Extjs libraries in \Holdthedoors-master\Holdthedoors-master\chirr\chirr_client
-The folder containing the libraries should be called "ext".
+1. Before running the app, you need to copy Extjs libraries in \Holdthedoors-master\Holdthedoors-master\chirr\chirr_client 
+2. The folder containing the libraries should be renamed "ext".
 
 Once you placed the libraries yo can run the app:
 ```sh
