@@ -1,5 +1,5 @@
 # Chirri chat
-
+![alt tag](https://github.com/CoEValencia/Holdthedoors/blob/master/Chirri_Capture.png)
 ##Requeriments:
 
 1. JavaSE 1.7
