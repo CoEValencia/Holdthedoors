@@ -39,4 +39,4 @@ sencha app watch
 ####You can find the app in [localhost:1841/chirr/]
 
 ####Made by HoldTheDoors
-[localhost:1841/chirr/]: <localhost:1841/chirr/>
+[localhost:1841/chirr/]: <http://localhost:1841/chirr/>
